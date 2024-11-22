@@ -18,7 +18,7 @@ public class Woodle {
             String word = null;
             try {
                 Scanner fileScanner = new Scanner(wordFile);
-                int x = (int) (Math.random() * 3000);
+                int x = (int) (Math.random() * 3603);
                 for (int i = 0; i < x; i++) {
                     word = fileScanner.nextLine().toUpperCase();
                 }
@@ -27,10 +27,9 @@ public class Woodle {
             }
             ArrayList<String> validCharCheck = new ArrayList<>();
             ArrayList<String> userGuessCheck = new ArrayList<>();
-            int guessNum = 1;
+            int guessNum = 0;
 
             while (!userGuess.equals(word)) {
-                word = "LOLLY";
                 System.out.println("\nGuess a 5 letter word:");
                 boolean validWord = false;
                 while (!validWord) {
@@ -67,7 +66,7 @@ public class Woodle {
                             userGuessCheck.set(j, " ");
                         }
                     }
-                    int charCheckIdx = word.indexOf(userGuess.substring(i, i + 1));
+                    int charCheckIdx = validCharCheck.indexOf(userGuess.substring(i, i + 1));
                     if (charCheckIdx != -1 && !validCharCheck.get(charCheckIdx).equals(" ") && !userGuessCheck.get(i).equals(" ")) {
                         correctChars++;
                         validCharCheck.set(charCheckIdx, " ");
