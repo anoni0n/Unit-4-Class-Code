@@ -7,6 +7,10 @@ public class Woodle {
     public static void main(String[] args) {
         System.out.println("----------WOODLE----------");
         String playing = "yes";
+        String userGuess = "";
+        Scanner userScanner = new Scanner(System.in);
+        int guessNum = 1;
+
         while (playing.equalsIgnoreCase("yes")) {
             File wordFile = new File("src/Projects/WORDS");
             String word = null;
@@ -14,16 +18,36 @@ public class Woodle {
                 Scanner fileScanner = new Scanner(wordFile);
                 int x = (int)(Math.random()*3000);
                 for (int i = 0; i < x; i++){
-                        word = fileScanner.nextLine().toUpperCase();
+                    word = fileScanner.nextLine().toUpperCase();
                 }
             } catch (Exception e) {System.out.println(e);}
 
-            System.out.println("\nGuess A 5 Letter Word:");
-            Scanner userScanner = new Scanner(System.in);
-            String userGuess = userScanner.nextLine().toUpperCase();
-            int guessNum = 1;
 
             while (!userGuess.equals(word)) {
+                boolean validWord = false;
+                System.out.println("\nGuess a 5 letter word");
+                //checks if the user's guess is in WORDS
+                while (!validWord) {
+                    userGuess = userScanner.nextLine().toUpperCase();
+                    try {
+                        Scanner fileScanner = new Scanner(wordFile);
+                        for (int i = 0; i < 3603; i++) {
+                            String y = fileScanner.nextLine().toUpperCase();
+                            if (y.equalsIgnoreCase(userGuess)) {
+                                validWord = true;
+                                break;
+                            }
+                            if (i==3602){
+                                System.out.println("That is not a valid word. Try again!");
+                            }
+                        }
+                    } catch (Exception e) {System.out.println("That is not a valid word. Try again!");}
+                }
+
+                if (userGuess.equals(word)){
+                    break;
+                }
+
                 int correctChars = 0;
                 int correctLocation = 0;
                 String tempString = word;
@@ -65,8 +89,6 @@ public class Woodle {
                 }
                 System.out.println(correctLocation + " in correct location.");
                 System.out.println(correctChars + " correct letters (not in correct location).");
-                System.out.println("\nGuess a 5 letter word");
-                userGuess = userScanner.nextLine().toUpperCase();
                 guessNum++;
             }
             System.out.printf("Congratulations! You guessed the word in %d tr%s! Would you like to play again? (yes/no)%n", guessNum, (guessNum > 1) ? "ies" : "y");
