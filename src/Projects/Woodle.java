@@ -57,7 +57,8 @@ public class Woodle {
                             String guessFirstHalf = userGuessCompare.substring(0, j);
                             String secondHalf;
                             String guessSecondHalf;
-                            //removes matching chars from both strings being compared. The else is so the second halves don't go out of bounds for j+1
+                            //removes matching chars from both strings being compared
+                            //the else is so the second halves don't go out of bounds for j+1
                             if (j +1<word.length()){
                                 secondHalf = wordCompare.substring(j +1);
                                 guessSecondHalf = userGuessCompare.substring(j +1);
