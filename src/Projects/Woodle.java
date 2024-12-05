@@ -9,11 +9,11 @@ public class Woodle {
         String playing = "yes";
         String userGuess = "";
         Scanner userScanner = new Scanner(System.in);
-        int guessNum = 1;
         //repeats the game while the user says yes
         while (playing.equalsIgnoreCase("yes")) {
             File wordFile = new File("src/Projects/WORDS");
             String word = null;
+            int guessNum = 1;
             try {
                 Scanner fileScanner = new Scanner(wordFile);
                 int x = (int)(Math.random()*6102);
