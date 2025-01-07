@@ -13,7 +13,7 @@ public class Woodle {
         while (playing.equalsIgnoreCase("yes")) {
             File wordFile = new File("src/Projects/WORDS");
             String word = null;
-            int guessNum = 1;
+            int guessNum = 0;
             try {
                 Scanner fileScanner = new Scanner(wordFile);
                 int x = (int)(Math.random()*6102);
