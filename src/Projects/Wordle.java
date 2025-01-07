@@ -78,14 +78,14 @@ public class Wordle {
                             displayWordArray.set(j, green + displayReference.charAt(j) +colorReset);
                         }
                     }
-                        //checks if there is an instance of userGuess.charAt(i) in tempString, and removes that instance from tempString if there
-                        //is to avoid over counting
-                        if (tempString.contains(userGuess.substring(i,i+1))) {
-                            //correctChars++;
-                            tempUpdate.setCharAt(tempString.indexOf(userGuess.substring(i,i+1)),' ');
-                            tempString = tempUpdate.toString();
-                            displayWordArray.set(i, yellow + displayReference.charAt(i) + colorReset);
-                        }
+                    //checks if there is an instance of userGuess.charAt(i) in tempString, and removes that instance from tempString if there
+                    //is to avoid over counting
+                    if (tempString.contains(userGuess.substring(i,i+1))) {
+                        //correctChars++;
+                        tempUpdate.setCharAt(tempString.indexOf(userGuess.substring(i,i+1)),' ');
+                        tempString = tempUpdate.toString();
+                        displayWordArray.set(i, yellow + displayReference.charAt(i) + colorReset);
+                    }
                 }
                 String displayWord = displayWordArray.toString().replaceFirst( "\\[","").replace("]", "").replace(",","").replace(" ","");
                 System.out.println(displayWord);
